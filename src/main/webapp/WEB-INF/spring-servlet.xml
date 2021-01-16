@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:util="http://www.springframework.org/schema/util"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/util
+ http://www.springframework.org/schema/util/spring-util.xsd
+  http://www.springframework.org/schema/tx
+ http://www.springframework.org/schema/tx/spring-tx.xsd
+  http://www.springframework.org/schema/mvc
+ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+<!-- ***********************************************************
+************This tx tag allow to use all Annotation in this Project*********************
+**************************************************************************** -->
+
+<tx:annotation-driven/>
+
+<!-- ***********************************************************
+************context:component-scan used for scan all the packages of project*********************
+**************************************************************************** -->
+<context:component-scan base-package="com.ishwar"/>
+ 
+ 
+ <!-- ***********************************************************
+************InternalResourceViewResolver resolve the views pages of project *********************
+Prefix used for where the pages are located and Suffix used for Extension type of views
+**************************************************************************** -->
+ <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" name="vewResolver">
+ <property name="prefix" value="/WEB-INF/views/"/>
+ <property name="Suffix" value=".jsp"/>
+ </bean>
+ 
+ <!-- 
+  ***********************************************************
+************LocalSessionFactoryBean holds all the configuration of Database *********************
+****************************************************************************
+  <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" name="ds">
+ <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+ <property name="url" value="jdbc:mysql://localhost:3306/springcurd"/>
+ <property name="username" value="root"/>
+  <property name="password" value=""/>
+ </bean>
+ 
+ 
+   ***********************************************************
+************LocalSessionFactoryBean required three properties such as Datasource, HibernateProperties and Annotated Classes
+****************************************************************************
+ <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+ name="factory">
+
+ <property name="dataSource" ref="ds"></property>
+ 
+
+  <property name="hibernateProperties">
+        <props>
+            <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+            <prop key="hibernate.show_sql">true</prop>
+            <prop key="hibernate.hbm2ddl.auto">update</prop>
+        </props>
+  </property>
+  
+  
+  
+  <property name="annotatedClasses">
+  <list>
+     <value>
+     </value>
+  </list>
+  </property>
+ </bean>
+ 
+  ***********************************************************
+************HibernateTemplate requires LocalSessionFactoryBean
+****************************************************************************
+ 
+ <bean class="org.springframework.orm.hibernate5.HibernateTemplate" 
+ name="hibernateTemplate">
+ <property name="sessionFactory" ref="factory" />
+ </bean>
+ 
+  ***********************************************************
+************For write and Update Operation in Database we have to enable HibernateTransactionManager
+****************************************************************************
+ 
+ 
+ <bean class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+  name="transactionManager">
+ <property name="sessionFactory" ref="factory"/>
+ </bean> -->
+ 
+ </beans>
